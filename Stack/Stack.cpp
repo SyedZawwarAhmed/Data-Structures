@@ -35,6 +35,6 @@ void Stack::print()
 {
     for (int i = 0; i <= this->top; i++)
     {
-        cout << data[i] << endl;
+        cout << this->data[i] << endl;
     }
 }
