@@ -31,8 +31,6 @@ char *infixToPostfix(char infix[])
     {
         if (isOperator(infix[i]) == false)
         {
-            // postfixTop++;
-            // postfix[postfixTop] = ',';
             postfixTop++;
             postfix[postfixTop] = infix[i];
         }
