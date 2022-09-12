@@ -85,6 +85,7 @@ char *infixToPostfix(char infix[])
         postfix[postfixTop] = stack[stackTop];
         stackTop--;
     }
+    postfix[postfixTop+1] = '\0';
     return postfix;
 }
 
@@ -153,10 +154,10 @@ float evaluatePostfix(char postfix[])
 
 int main()
 {
-    char infix[] = "(91-7423)*(334+75435)^3";
-    // cout << infixToPostfix(infix) << endl;
+    char infix[] = "(3+9-10)*29^3/313";
+    cout << "Infix to Postfix coversion:- " << infixToPostfix(infix) << endl;
     char *postfix = infixToPostfix(infix);
-    cout << evaluatePostfix(postfix) << endl;
+    cout << "Evaluation:- " << evaluatePostfix(postfix) << endl;
 
     return 0;
 }
