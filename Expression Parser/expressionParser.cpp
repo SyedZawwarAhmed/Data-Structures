@@ -19,6 +19,7 @@ int getPrecedence(char character)
         return 1;
     else if (character == '^')
         return 2;
+    return 0;
 }
 
 char *infixToPostfix(char infix[])
