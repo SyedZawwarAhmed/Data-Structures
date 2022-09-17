@@ -22,8 +22,8 @@ ExpressionTree::ExpressionTree(char* postfix) {
         else {
             Node* newNode = new Node;
             newNode->data = postfix[i];
-            newNode->leftChild = stack[stackTop--];
             newNode->rightChild = stack[stackTop--];
+            newNode->leftChild = stack[stackTop--];
             stack[++stackTop] = newNode;
         }
     }
@@ -31,21 +31,21 @@ ExpressionTree::ExpressionTree(char* postfix) {
 }
 
 void ExpressionTree::inOrder (Node* node) {
-    if (node->rightChild != NULL)
-    inOrder(node->rightChild);
+    if (node->leftChild != NULL)
+    inOrder(node->leftChild);
 
     cout << node->data;
 
-    if (node->leftChild != NULL)
-    inOrder(node->leftChild);
+    if (node->rightChild != NULL)
+    inOrder(node->rightChild);
 }
 
 void ExpressionTree::postOrder (Node* node) {
-    if (node->rightChild != NULL)
-    postOrder(node->rightChild);
-
     if (node->leftChild != NULL)
     postOrder(node->leftChild);
+
+    if (node->rightChild != NULL)
+    postOrder(node->rightChild);
 
     cout << node->data;
 }
@@ -53,9 +53,9 @@ void ExpressionTree::postOrder (Node* node) {
 void ExpressionTree::preOrder (Node* node) {
     cout << node->data;
 
-    if (node->rightChild != NULL)
-    preOrder(node->rightChild);
-
     if (node->leftChild != NULL)
     preOrder(node->leftChild);
+
+    if (node->rightChild != NULL)
+    preOrder(node->rightChild);
 }
