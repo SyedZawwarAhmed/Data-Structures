@@ -15,5 +15,8 @@ int main()
     tree.postOrder(tree.root);
     cout << endl;
     tree.preOrder(tree.root);
+    cout << endl;
+    int searchFor = 13;
+    cout << searchFor << " @ " << tree.search(searchFor, tree.root)->data << endl;
     return 0;
 }
