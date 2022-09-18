@@ -32,37 +32,48 @@ void BinarySearchTree::insert(int data, Node *node)
     }
 }
 
+Node *BinarySearchTree::search(int data, Node *node)
+{
+    if (*node->data > data)
+        return search(data, node->leftChild);
+    else if (*node->data < data)
+        return search(data, node->rightChild);
+    else
+        return node;
+}
+
 void BinarySearchTree::inOrder(Node *node)
 {
     if (node->leftChild != NULL)
         inOrder(node->leftChild);
 
     if (node->data != NULL)
-    cout << *node->data << " ";
+        cout << *node->data << " ";
 
     if (node->rightChild != NULL)
         inOrder(node->rightChild);
 }
 
-
-void BinarySearchTree::postOrder (Node* node) {
+void BinarySearchTree::postOrder(Node *node)
+{
     if (node->leftChild != NULL)
-    postOrder(node->leftChild);
+        postOrder(node->leftChild);
 
     if (node->rightChild != NULL)
-    postOrder(node->rightChild);
+        postOrder(node->rightChild);
 
     if (node->data != NULL)
-    cout << *node->data << " ";
+        cout << *node->data << " ";
 }
 
-void BinarySearchTree::preOrder (Node* node) {
+void BinarySearchTree::preOrder(Node *node)
+{
     if (node->data != NULL)
-    cout << *node->data << " ";
+        cout << *node->data << " ";
 
     if (node->leftChild != NULL)
-    preOrder(node->leftChild);
+        preOrder(node->leftChild);
 
     if (node->rightChild != NULL)
-    preOrder(node->rightChild);
+        preOrder(node->rightChild);
 }

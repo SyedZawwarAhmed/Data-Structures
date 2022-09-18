@@ -9,7 +9,7 @@ class BinarySearchTree {
     Node* root;
     BinarySearchTree();
     void insert(int data, Node* node);
-    int search(int data);
+    Node* search(int data, Node* node);
     // void delete(int data);
     void inOrder(Node* node);
     void postOrder(Node* node);
