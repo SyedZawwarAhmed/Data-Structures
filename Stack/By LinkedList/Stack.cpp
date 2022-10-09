@@ -19,9 +19,9 @@ void Stack::push(int item) {
         while (temp != NULL) {
             if (temp->next == NULL) {
                 temp->next = new Node();
-                temp->next->data = temp->data;
-                temp->next->next = temp->next;
-                // temp->next->previous = temp;
+                temp->next->data = item;
+                temp->next->next = NULL;
+                temp->next->previous = temp;
                 break;
             }
             temp = temp->next;
