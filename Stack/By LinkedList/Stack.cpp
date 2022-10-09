@@ -8,25 +8,26 @@ Stack::Stack() {
 }
 
 void Stack::push(int item) {
-    Node *newNode = new Node();
-    newNode->data = item;
-    newNode->next = NULL;
     if (this->head == NULL) {
-        this->head = newNode;
+        this->head = new Node();
+        this->head->data = item;
+        this->head->next = NULL;
+        this->top = this->head;
     }
     else {
         Node *temp = this->head;
         while (temp != NULL) {
             if (temp->next == NULL) {
-                temp->next = newNode;
-                newNode->previous = temp;
+                temp->next = new Node();
+                temp->next->data = temp->data;
+                temp->next->next = temp->next;
+                // temp->next->previous = temp;
                 break;
             }
             temp = temp->next;
         }
-        
+        this->top = temp->next;
     }
-    this->top = newNode;
 }
 
 int Stack::pop() {

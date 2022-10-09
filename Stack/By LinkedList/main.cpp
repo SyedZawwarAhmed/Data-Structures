@@ -10,8 +10,8 @@ int main() {
     stack.push(5);
     stack.push(2);
     stack.push(8);
-    stack.pop();
-    stack.pop();
+    // stack.pop();
+    // stack.pop();
     stack.push(0);
     stack.push(4);
 
