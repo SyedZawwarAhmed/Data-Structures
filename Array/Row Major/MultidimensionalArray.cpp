@@ -24,7 +24,7 @@ int MultidimensionalArray::getAddress(int indices[]) {
         product *= indices[i];
         slot += product;
     }
-    // int baseAddress = 640000;
+    
     int address = baseAddress + slot*sizeof(int);
     return address;
 }
