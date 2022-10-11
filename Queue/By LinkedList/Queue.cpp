@@ -8,19 +8,18 @@ Queue::Queue() {
 }
 
 void Queue::enqueue(int item) {
+    Node *newNode = new Node();
+    newNode->data = item;
+    newNode->next = NULL;
     if (this->front == NULL) {
-        this->front = new Node();
-        this->front->data = item;
-        this->front->next = NULL;
+        this->front = newNode;
         this->rear = this->front;
     }
     else {
         Node *temp = this->front;
         while (temp != NULL) {
             if (temp->next == NULL) {
-                temp->next = new Node();
-                temp->next->data = item;
-                temp->next->next = NULL;
+                temp->next = newNode;
                 temp->next->previous = temp;
                 this->rear = temp->next;
                 break;
@@ -32,14 +31,12 @@ void Queue::enqueue(int item) {
 
 int Queue::dequeue() {
     int result = this->front->data;
-    Node* temp = new Node();
-    temp->data = this->front->next->data;
-    temp->next = this->front->next->next;
-    delete this->front;
-    this->front = new Node;
-    this->front->data = temp->data;
-    this->front->next = temp->next;
+    Node* temp = this->front;
+    this->front = NULL;
+    this->front = temp->next;
+    this->front->previous = NULL;
     delete temp;
+    temp = NULL;
     return result;
 }
 
