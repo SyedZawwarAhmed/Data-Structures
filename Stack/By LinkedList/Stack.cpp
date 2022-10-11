@@ -8,19 +8,18 @@ Stack::Stack() {
 }
 
 void Stack::push(int item) {
+    Node *newNode = new Node();
+    newNode->data = item;
+    newNode->next = NULL;
     if (this->head == NULL) {
-        this->head = new Node();
-        this->head->data = item;
-        this->head->next = NULL;
+        this->head = newNode;
         this->top = this->head;
     }
     else {
         Node *temp = this->head;
         while (temp != NULL) {
             if (temp->next == NULL) {
-                temp->next = new Node();
-                temp->next->data = item;
-                temp->next->next = NULL;
+                temp->next = newNode;
                 temp->next->previous = temp;
                 break;
             }
@@ -33,6 +32,7 @@ void Stack::push(int item) {
 int Stack::pop() {
     int result = this->top->data;
     this->top = this->top->previous;
+    delete this->top->next;
     this->top->next = NULL;
     return result;
 }
