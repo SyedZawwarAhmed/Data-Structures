@@ -30,14 +30,17 @@ void Queue::enqueue(int item) {
 }
 
 int Queue::dequeue() {
-    int result = this->front->data;
-    Node* temp = this->front;
-    this->front = NULL;
-    this->front = temp->next;
-    this->front->previous = NULL;
-    delete temp;
-    temp = NULL;
-    return result;
+    if (this->front != NULL) {
+        int result = this->front->data;
+        Node* temp = this->front;
+        this->front = temp->next;
+        delete temp;
+        temp = NULL;
+        return result;
+    }
+    else {
+        throw runtime_error{"Error: QueueUnderflow"};
+    }
 }
 
 void Queue::print() {
