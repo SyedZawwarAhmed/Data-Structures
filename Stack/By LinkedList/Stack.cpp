@@ -13,6 +13,7 @@ void Stack::push(int item) {
     newNode->next = NULL;
     if (this->head == NULL) {
         this->head = newNode;
+        this->head->previous = NULL;
         this->top = this->head;
     }
     else {
@@ -30,11 +31,23 @@ void Stack::push(int item) {
 }
 
 int Stack::pop() {
-    int result = this->top->data;
-    this->top = this->top->previous;
-    delete this->top->next;
-    this->top->next = NULL;
-    return result;
+    if (this->top != NULL) {
+        int result = this->top->data;
+        if (this->top != this->head) {
+            this->top = this->top->previous;
+            delete this->top->next;
+            this->top->next = NULL;
+        }
+        else {
+            delete this->head;
+            this->head = NULL;
+            this->top = NULL;
+        }
+        return result;
+    } 
+    else {
+        throw runtime_error {"Error: StackUnderflow"};
+    }
 }
 
 void Stack::print() {
