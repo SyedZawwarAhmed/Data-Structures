@@ -4,7 +4,7 @@ class MultidimensionalArray {
     int* data;
     public:
     MultidimensionalArray(int noOfDimensions, int sizesOfDimensions[]);
-    int getAddress(int indices[]);
+    uintptr_t getAddress(int indices[]);
     int getItem(int indices[]);
     void setItem(int item, int indices[]);
 };
