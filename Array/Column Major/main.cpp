@@ -10,13 +10,13 @@ int main()
     MultidimensionalArray arr1(noOfDimensions, sizesOfDimensions);
 
     int item = 0;
-    for (int k = 0; k < 2; k++)
+    for (int i = 0; i < 2; i++)
     {
         for (int j = 0; j < 3; j++)
         {
-            for (int i = 0; i < 4; i++)
+            for (int k = 0; k < 4; k++)
             {
-                int indices[] = {k, j, i};
+                int indices[] = {i, j, k};
                 arr1.setItem(++item, indices);
             }
         }
@@ -24,19 +24,19 @@ int main()
 
     cout << "\n" << endl;
 
-    for (int k = 0; k < 2; k++)
+    for (int k = 0; k < 4; k++)
     {
         for (int j = 0; j < 3; j++)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
-                int indices[] = {k, j, i};
-                cout << k << " " << j << " " << i << " ";
+                int indices[] = {i, j, k};
+                cout << i << " " << j << " " << k << " ";
                 cout << arr1.getItem(indices) << " ";
-                cout << arr1.getAddress(indices) << endl; 
+                cout << arr1.getAddress(indices) << endl;
             }
         }
     }
-    
+
     return 0;
 }
