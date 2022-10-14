@@ -29,10 +29,10 @@ uintptr_t MultidimensionalArray::getAddress(int indices[])
     }
     uintptr_t baseAddress = (uintptr_t)(this->data);
     int slot = 0;
-    for (int i = 0; i <= this->noOfDimensions-1; i++)
+    for (int i = 0; i <= this->noOfDimensions - 1; i++)
     {
         int product = 1;
-        for (int j = i+1; j <= this->noOfDimensions - 1; j++)
+        for (int j = i + 1; j <= this->noOfDimensions - 1; j++)
         {
             product *= sizes[j];
         }
