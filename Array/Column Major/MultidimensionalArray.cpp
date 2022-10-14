@@ -22,14 +22,19 @@ uintptr_t MultidimensionalArray::getAddress(int indices[])
     {
         indice[i] = indices[this->noOfDimensions - 1 - i];
     }
-    uintptr_t baseAddress = (uintptr_t)(this->data);
-    int slot = 0;
+    int *sizes = new int[this->noOfDimensions];
     for (int i = 0; i < this->noOfDimensions; i++)
     {
+        sizes[i] = this->sizesOfDimensions[this->noOfDimensions - 1 - i];
+    }
+    uintptr_t baseAddress = (uintptr_t)(this->data);
+    int slot = 0;
+    for (int i = 0; i <= this->noOfDimensions-1; i++)
+    {
         int product = 1;
-        for (int j = i + 1; j <= this->noOfDimensions - 1; j++)
+        for (int j = i+1; j <= this->noOfDimensions - 1; j++)
         {
-            product *= this->sizesOfDimensions[j];
+            product *= sizes[j];
         }
         product *= indice[i];
         slot += product;
