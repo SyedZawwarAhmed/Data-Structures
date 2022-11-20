@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 #include <windows.h>
 #include "Graph.h"
 
@@ -60,7 +61,7 @@ struct Vertex
 {
     int index;
     bool known = false;
-    int distance = 99999;
+    int distance = numeric_limits<int>::max();;
     int previousVertex = -1;
     int outdegree;
     int *adjacentVertices;
@@ -109,7 +110,7 @@ int *Graph::getShortestPath(int vertex)
 
     for (int i = 0; i < this->numberOfVertices; i++)
     {
-        int minimumDistance = 99999;
+        int minimumDistance = numeric_limits<int>::max();;
         int vertexSelected;
         for (int j = 0; j < this->numberOfVertices; j++)
         {
