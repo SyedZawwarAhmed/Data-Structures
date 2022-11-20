@@ -87,12 +87,13 @@ int main()
     getline(MyReadFile, myText);
     int numberOfEdges = getVerticesOrEdges(myText, 2);
 
-    int vertices[] = {3, 5, 7, 9};
+    int vertices[] = {0, 1, 2, 3, 4, 5, 6};
     Graph graph(numberOfVertices, vertices);
     while (getline(MyReadFile, myText)) {
         graph.insert(getX(myText), getY(myText), getWeight(myText));
     }
     graph.print();
     MyReadFile.close();
+    graph.getShortestPath(5);
     return 0;
 }
