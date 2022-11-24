@@ -67,7 +67,7 @@ struct Vertex
     int *adjacentVertices;
 };
 
-int *Graph::getShortestPath(int vertex)
+int *Graph::getShortestPath(int source, int destination)
 {
 
     Vertex **vertices = new Vertex *[this->numberOfVertices];
@@ -99,14 +99,7 @@ int *Graph::getShortestPath(int vertex)
         }
     }
 
-    for (int i = 0; i < numberOfVertices; i++)
-    {
-        if (vertices[i]->outdegree > 0)
-        {
-            vertices[i]->distance = 0;
-            break;
-        }
-    }
+    vertices[source]->distance = 0;
 
     for (int i = 0; i < this->numberOfVertices; i++)
     {
@@ -136,16 +129,16 @@ int *Graph::getShortestPath(int vertex)
     }
 
     int previousVerticesCount = 0;
-    int previousVertex = vertices[vertex]->previousVertex;
+    int previousVertex = vertices[destination]->previousVertex;
     while (previousVertex > -1)
     {
         previousVertex = vertices[previousVertex]->previousVertex;
         previousVerticesCount++;
     }
     int previousVerticesCountBackup = previousVerticesCount + 1;
-    previousVertex = vertices[vertex]->previousVertex;
+    previousVertex = vertices[destination]->previousVertex;
     int *shortestPath = new int[previousVerticesCountBackup];
-    shortestPath[previousVerticesCount] = vertex;
+    shortestPath[previousVerticesCount] = destination;
     while (previousVertex > -1)
     {
         shortestPath[--previousVerticesCount] = previousVertex;

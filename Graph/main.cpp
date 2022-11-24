@@ -94,6 +94,6 @@ int main()
     }
     graph.print();
     MyReadFile.close();
-    graph.getShortestPath(5);
+    graph.getShortestPath(1, 5);
     return 0;
 }
